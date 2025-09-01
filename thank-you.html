@@ -1,65 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Thank You – Confidant Letters</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Confidant Letters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Meta Pixel Base Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1202907791597478');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=1202907791597478&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Base Code -->
+    <!-- Meta Pixel Base Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1202907791597478');
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=1202907791597478&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Base Code -->
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    let value = parseFloat(params.get('value'));
-    const plan = (params.get('plan') || '').toLowerCase();
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      let value = parseFloat(params.get('value'));
+      const plan = (params.get('plan') || '').toLowerCase();
 
-    if (isNaN(value)) {
-      const map = {
-        'weekly_monthly': 17.99,
-        'fortnightly_monthly': 9.99,
-        'weekly_annual': 179.00,
-        'fortnightly_annual': 99.00
-      };
-      value = map[plan];
-    }
+      if (isNaN(value)) {
+        const map = {
+          'weekly_monthly': 17.99,
+          'fortnightly_monthly': 9.99,
+          'weekly_annual': 179.00,
+          'fortnightly_annual': 99.00
+        };
+        value = map[plan];
+      }
 
-    fbq('track', 'Purchase', {
-      value: value,
-      currency: 'GBP',
-      content_name: 'Confidant Letters Subscription',
-      content_type: 'product',
-      subscription_plan: plan || 'unknown'
-    });
-  </script>
+      fbq('track', 'Purchase', {
+        value: value,
+        currency: 'GBP',
+        content_name: 'Confidant Letters Subscription',
+        content_type: 'product',
+        subscription_plan: plan || 'unknown'
+      });
+    </script>
+    <!-- End Purchase Tracking -->
 
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:2rem}
-    .wrap{max-width:720px;margin:0 auto;text-align:center}
-    h1{font-size:2rem;margin-bottom:.5rem}
-    p{color:#333;line-height:1.6}
-  </style>
+    <style>
+        body {
+            font-family: 'Crimson Text', serif;
+            background-image: url('https://github.com/drgmike/Confidant-letters-/blob/main/file_00000000e0cc61fbac5b844ad319dc64.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .playfair { font-family: 'Playfair Display', serif; }
+        .warm-overlay { background-color: rgba(139, 115, 85, 0.4); }
+        .text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        .thank-you-panel {
+            background-color: rgba(254, 243, 199, 0.95);
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(212, 175, 55, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .checkmark { animation: checkmark-bounce 1.5s ease-in-out; }
+        @keyframes checkmark-bounce {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+        .fade-in { animation: fade-in 2s ease-in-out; }
+        @keyframes fade-in {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .letter-float { animation: letter-float 3s ease-in-out infinite; }
+        @keyframes letter-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .official-seal {
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            border: 3px solid #b8860b;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
-<body>
-  <div class="wrap">
-    <h1>Thank you for your subscription</h1>
-    <p>Your first letter will be on its way shortly. A confirmation has been sent to your email.</p>
-    <p>If you need any help, email <a href="mailto:info@confidant.solutions">info@confidant.solutions</a>.</p>
-  </div>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="warm-overlay min-h-screen w-full flex items-center justify-center p-4">
+        <div class="thank-you-panel rounded-2xl p-12 max-w-2xl w-full text-center relative">
+            
+            <!-- Decorative Corner Elements -->
+            <div class="absolute top-4 left-4 text-amber-600 text-2xl">✦</div>
+            <div class="absolute top-4 right-4 text-amber-600 text-2xl">✦</div>
+            <div class="absolute bottom-4 left-4 text-amber-600 text-2xl">✦</div>
+            <div class="absolute bottom-4 right-4 text-amber-600 text-2xl">✦</div>
+            
+            <!-- Success Checkmark -->
+            <div class="checkmark mb-8">
+                <div class="w-24 h-24 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6 official-seal">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Main Heading -->
+            <h1 class="playfair text-6xl font-bold text-amber-900 mb-6 fade-in">
+                Thank You!
+            </h1>
+            
+            <!-- Subscription Confirmation -->
+            <div class="fade-in mb-8">
+                <h2 class="playfair text-3xl font-semibold text-amber-800 mb-4">
+                    Your Subscription is Confirmed
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-amber-600 to-yellow-500 mx-auto mb-6"></div>
+            </div>
+            
+            <!-- Main Message -->
+            <div class="fade-in mb-10">
+                <p class="text-2xl text-amber-900 leading-relaxed mb-6 font-semibold">
+                    You will soon start receiving your beautifully crafted letters
+                </p>
+                <p class="text-xl text-amber-800 leading-relaxed mb-4">
+                    Each letter has been carefully prepared to transport you into the heart of history, 
+                    bringing these forgotten voices back to life through authentic storytelling.
+                </p>
+                <p class="text-lg text-amber-700 italic">
+                    Your journey through time begins with the next post...
+                </p>
+            </div>
+            
+            <!-- Decorative Letter Icon -->
+            <div class="letter-float mb-8">
+                <div class="w-16 h-12 bg-amber-100 border-2 border-amber-600 rounded-sm mx-auto relative">
+                    <div class="absolute top-1 left-1 right-1 h-1 bg-amber-600 rounded"></div>
+                    <div class="absolute top-3 left-1 right-1 h-1 bg-amber-500 rounded"></div>
+                    <div class="absolute top-5 left-1 right-3 h-1 bg-amber-400 rounded"></div>
+                    <div class="absolute top-7 left-1 right-2 h-1 bg-amber-300 rounded"></div>
+                </div>
+            </div>
+            
+            <!-- What Happens Next -->
+            <div class="fade-in mb-10 bg-amber-50 rounded-lg p-6 border-2 border-amber-200">
+                <h3 class="playfair text-2xl font-semibold text-amber-900 mb-4">What Happens Next?</h3>
+                <div class="text-left space-y-3 text-amber-800">
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+                        <span>Your first letter will be posted within the next few days</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+                        <span>Letters arrive every Tuesday (weekly) or every other Tuesday (fortnightly)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+                        <span>Each letter continues the unfolding story from the mill's hidden collection</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Official Signature -->
+            <div class="fade-in border-t-2 border-amber-300 pt-8">
+                <p class="playfair text-xl text-amber-900 mb-2 italic">
+                    Welcome to the story,
+                </p>
+                <p class="playfair text-2xl font-bold text-amber-900 mb-6">
+                    The Confidant Letters Team
+                </p>
+                
+                <!-- Contact Information -->
+                <div class="bg-amber-100 rounded-lg p-6 border border-amber-300">
+                    <p class="text-amber-800 mb-2 font-semibold">Questions or concerns?</p>
+                    <a href="mailto:info@confidant.solutions" 
+                       class="text-amber-900 hover:text-amber-700 text-lg font-semibold underline transition-colors duration-300">
+                        info@confidant.solutions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
