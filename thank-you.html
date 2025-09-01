@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Thank You – Confidant Letters</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Meta Pixel Base Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1202907791597478');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1202907791597478&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Base Code -->
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    let value = parseFloat(params.get('value'));
+    const plan = (params.get('plan') || '').toLowerCase();
+
+    if (isNaN(value)) {
+      const map = {
+        'weekly_monthly': 17.99,
+        'fortnightly_monthly': 9.99,
+        'weekly_annual': 179.00,
+        'fortnightly_annual': 99.00
+      };
+      value = map[plan];
+    }
+
+    fbq('track', 'Purchase', {
+      value: value,
+      currency: 'GBP',
+      content_name: 'Confidant Letters Subscription',
+      content_type: 'product',
+      subscription_plan: plan || 'unknown'
+    });
+  </script>
+
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:2rem}
+    .wrap{max-width:720px;margin:0 auto;text-align:center}
+    h1{font-size:2rem;margin-bottom:.5rem}
+    p{color:#333;line-height:1.6}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Thank you for your subscription</h1>
+    <p>Your first letter will be on its way shortly. A confirmation has been sent to your email.</p>
+    <p>If you need any help, email <a href="mailto:info@confidant.solutions">info@confidant.solutions</a>.</p>
+  </div>
+</body>
+</html>
