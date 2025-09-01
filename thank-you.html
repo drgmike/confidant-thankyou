@@ -1,44 +1,121 @@
-<!-- Meta Pixel Base Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1202907791597478');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=1202907791597478&ev=Purchase&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Base Code -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - Confidant Letters</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- Purchase Tracking Only -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    let value = parseFloat(params.get('value'));
-    const plan = (params.get('plan') || '').toLowerCase();
-
-    if (isNaN(value)) {
-      const map = {
-        'weekly_monthly': 17.99,
-        'fortnightly_monthly': 9.99,
-        'weekly_annual': 179.00,
-        'fortnightly_annual': 99.00
-      };
-      value = map[plan];
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .heading-font { font-family: 'Playfair Display', serif; }
+    .bg-overlay {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
     }
+  </style>
 
-    fbq('track', 'Purchase', {
-      value: value || 0.00,
-      currency: 'GBP',
-      content_name: 'Confidant Letters Subscription',
-      content_type: 'product',
-      subscription_plan: plan || 'unknown'
+  <!-- Meta Pixel Base Code (Purchase only) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1202907791597478');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1202907791597478&ev=Purchase&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Base Code -->
+
+  <!-- Purchase Tracking -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const params = new URLSearchParams(window.location.search);
+      let value = parseFloat(params.get('value'));
+      const plan = (params.get('plan') || '').toLowerCase();
+
+      if (isNaN(value)) {
+        const map = {
+          'weekly_monthly': 17.99,
+          'fortnightly_monthly': 9.99,
+          'weekly_annual': 179.00,
+          'fortnightly_annual': 99.00
+        };
+        value = map[plan];
+      }
+
+      fbq('track', 'Purchase', {
+        value: value || 0.00,
+        currency: 'GBP',
+        content_name: 'Confidant Letters Subscription',
+        content_type: 'product',
+        subscription_plan: plan || 'unknown'
+      });
     });
-  });
-</script>
+  </script>
+</head>
+<body class="min-h-screen bg-cover bg-center bg-no-repeat relative"
+      style="background-image: url('https://raw.githubusercontent.com/drgmike/Confidant-letters-/main/file_00000000e0cc61fbac5b844ad319dc64.png');">
+  <div class="bg-overlay absolute inset-0"></div>
+
+  <div class="relative z-10 min-h-screen flex items-center justify-center px-6 py-12">
+    <div class="max-w-2xl mx-auto text-center">
+      <!-- Main Heading -->
+      <h1 class="heading-font text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+        Thank You
+      </h1>
+
+      <!-- Subscription Message -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 mb-8 border border-white/20">
+        <p class="text-xl md:text-2xl text-white font-medium mb-6 leading-relaxed">
+          Thank you for subscribing to <span class="heading-font font-semibold text-amber-200">Confidant Letters</span>.
+        </p>
+        <p class="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
+          Your journey through the hidden stories of the past begins soon.
+        </p>
+        <p class="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
+          We're so glad to have you with us — every letter you receive is a piece of history, carefully brought back to life.
+        </p>
+        <p class="text-lg md:text-xl text-white/90 leading-relaxed">
+          If you ever have questions, ideas, or just want to share your thoughts, we'd love to hear from you.
+        </p>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="space-y-6 mb-10">
+        <div class="flex items-center justify-center space-x-3">
+          <span class="text-2xl">📬</span>
+          <a href="https://confidantletters.co.uk"
+             class="text-lg md:text-xl text-amber-200 hover:text-amber-100 transition-colors duration-300 font-medium">
+            Visit us anytime at confidantletters.co.uk
+          </a>
+        </div>
+
+        <div class="flex items-center justify-center space-x-3">
+          <span class="text-2xl">✉️</span>
+          <a href="mailto:info@confidant.solutions"
+             class="text-lg md:text-xl text-amber-200 hover:text-amber-100 transition-colors duration-300 font-medium">
+            Contact us at info@confidant.solutions
+          </a>
+        </div>
+      </div>
+
+      <!-- Signature -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+        <p class="text-lg md:text-xl text-white/90 mb-2 heading-font italic">
+          Welcome to the story,
+        </p>
+        <p class="text-lg md:text-xl text-amber-200 font-semibold">
+          The Confidant Letters Team
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
